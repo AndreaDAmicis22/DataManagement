@@ -38,16 +38,16 @@ The project uses data from two APIs:
 
 Data is stored in MongoDB collections for efficient handling and analysis.
 
-## Methodology
-### Data Acquisition
+# Methodology
+## Data Acquisition
 - **Pollution Data**: Collected daily for 2022 for major European cities using the OpenAQ API. 
 - **Weather Data**: Matched with pollution data by geographical coordinates using the Open-Meteo API.
 
-### Data Profiling
+## Data Profiling
 - **Completeness**: Addressed missing values (`NaN` and `0`) in the datasets, ensuring reliable averages.
 - **Consistency**: Verified ranges for pollutants and meteorological parameters to identify anomalies.
 
-### Data Integration and Cleaning
+## Data Integration and Cleaning
 - Removed entries with excessively high pollution parameter values.
 - Excluded entries with negative pollutant values.
 - Dropped columns for `CO`, `NOx`, and `NO` due to almost all values being `NaN`.
@@ -59,7 +59,7 @@ Data is stored in MongoDB collections for efficient handling and analysis.
   - Minimum temperature > 50°C OR Apparent minimum temperature > 0°C.
 - Excluded entries with inconsistent WindSpeed and Precipitation values, which corresponded to temperature inconsistencies.
 
-### Data Enrichment
+## Data Enrichment
 
 - **WMO Code Descriptions**  
   Added descriptive labels for `WMO_code` to improve interpretability.  
@@ -74,7 +74,7 @@ Data is stored in MongoDB collections for efficient handling and analysis.
   - **Western Europe:** Germany, Austria, Switzerland, Netherlands, Belgium, and France.  
   - **Southern Europe:** Italy, Spain, and Portugal.
 
-### Data Storage
+## Data Storage
 Data is stored in a document-oriented MongoDB database for flexibility:
 - `Pollution Collection`: Contains raw pollution data. 180’768 documents.
 - `Weather Collection`: Contains raw weather data. 180’768 documents.
@@ -82,7 +82,7 @@ Data is stored in a document-oriented MongoDB database for flexibility:
 - `Weather Cleaned`: Contains cleaned weather data. 99'048 documents
 - `Collection Merged`: Contains weather and pollution data merged together. 99'048 documents
 
-### Final Data Structure (Collection Merged)
+## Final Data Structure (Collection Merged)
 
 - **_id:** Unique identifier for the document.  
 - **State:** Country code (e.g., "CH").  
